@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StartGame : MonoBehaviour
 {
+    public ScoreDisplay scoreDisplay;
     public CountdownBehavior countdownTimer;
     public bool gameOn = false;
 
@@ -11,5 +12,10 @@ public class StartGame : MonoBehaviour
     {
         countdownTimer.StartCountdown();
         gameOn = true;
+        if (countdownTimer.CountdownTimer == 0)
+        {
+            countdownTimer.CountdownTimer = 60;
+            scoreDisplay.score = 0;
+        }
     }
 }
