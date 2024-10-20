@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ScoreAdder : MonoBehaviour
 {
+    public CountdownBehavior countdownTimer;
     public ScoreDisplay scoreDisplay;
     public StartGame game;
     public float clicks = 0;
@@ -12,7 +13,7 @@ public class ScoreAdder : MonoBehaviour
     {
         clicks += 1;
 
-        if (clicks >= 2)
+        if (clicks >= 2 && countdownTimer.CountdownTimer > 0)
         {
             scoreDisplay.score += 1;
             scoreDisplay.UpdateScoreText();

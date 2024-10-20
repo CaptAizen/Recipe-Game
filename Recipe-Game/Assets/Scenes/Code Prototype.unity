@@ -828,8 +828,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e86992e93f44844dac270990fb742fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countdownTimer: {fileID: 1800616818}
   scoreDisplay: {fileID: 628068300}
   game: {fileID: 956276267}
+  clicks: 0
 --- !u!1 &1164917411
 GameObject:
   m_ObjectHideFlags: 0
