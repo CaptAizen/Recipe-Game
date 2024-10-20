@@ -815,6 +815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b308ef127d3af1d4d93fb6c7d79ae254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreAdder: {fileID: 956276268}
   scoreDisplay: {fileID: 628068300}
   countdownTimer: {fileID: 1800616818}
   gameOn: 0
