@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class RawtoCookedtoBurnt : MonoBehaviour
 {
+    private Renderer ingredientRenderer;
     // Start is called before the first frame update
     void Start()
     {
-        
+        ingredientRenderer = GetComponent<Renderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+public void SetColor(Color newColor)
     {
-        
+        if (ingredientRenderer != null)
+        {
+            ingredientRenderer.material.color = newColor;
+        }
     }
-}
