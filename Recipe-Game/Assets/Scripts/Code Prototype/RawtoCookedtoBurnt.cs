@@ -11,10 +11,11 @@ public class RawtoCookedtoBurnt : MonoBehaviour
         ingredientRenderer = GetComponent<Renderer>();
     }
 
-public void SetColor(Color newColor)
+    public void SetColor(Color newColor)
     {
         if (ingredientRenderer != null)
         {
             ingredientRenderer.material.color = newColor;
         }
     }
+}
