@@ -12,8 +12,9 @@ public class Ingredient
     public int PointValueBurnt;
     public float CookingTime;
     public float BurningTime;
+    public float TimeSpentOnPan;
 
-    public Ingredient(string name, int id, GameObject prefab, int pointValueRaw, int pointValueCooked, int pointValueBurnt, float cookingTime, float burningTime)
+    public Ingredient(string name, int id, GameObject prefab, int pointValueRaw, int pointValueCooked, int pointValueBurnt, float cookingTime, float burningTime, float timeSpentOnPan)
     {
         Name = name;
         Id = id;
@@ -23,5 +24,6 @@ public class Ingredient
         PointValueBurnt = pointValueBurnt;
         CookingTime = cookingTime;
         BurningTime = burningTime;
+        TimeSpentOnPan = timeSpentOnPan;
     }
 }

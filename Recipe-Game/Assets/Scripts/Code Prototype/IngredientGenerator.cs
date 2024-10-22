@@ -24,12 +24,12 @@ public class IngredientGenerator : MonoBehaviour
     }
     void Start()
     {
-        ingredients.Add(new Ingredient("Secret Ingredient", 0, Resources.Load("Ingredients/Secret Ingredient") as GameObject, -1, 2, -2, 2, 4));
-        ingredients.Add(new Ingredient("Steak", 1, Resources.Load("Ingredients/Steak") as GameObject, -1, 2, -2, 2, 4));
-        ingredients.Add(new Ingredient("Chicken", 2, Resources.Load("Ingredients/Chicken leg") as GameObject, -1, 2, -2, 2, 4));
-        ingredients.Add(new Ingredient("Onion", 3, Resources.Load("Ingredients/Onion") as GameObject, -1, 2, -2, 2, 4));
-        ingredients.Add(new Ingredient("Garlic", 4, Resources.Load("Ingredients/Garlic") as GameObject, -1, 2, -2, 2, 4));
-        ingredients.Add(new Ingredient("Potato", 5, Resources.Load("Ingredients/Potato") as GameObject, -1, 2, -2, 2, 4));
+        ingredients.Add(new Ingredient("Secret Ingredient", 0, Resources.Load("Ingredients/Secret Ingredient") as GameObject, -1, 2, -2, 2, 4, 0));
+        ingredients.Add(new Ingredient("Steak", 1, Resources.Load("Ingredients/Steak") as GameObject, -1, 2, -2, 2, 4, 0));
+        ingredients.Add(new Ingredient("Chicken", 2, Resources.Load("Ingredients/Chicken leg") as GameObject, -1, 2, -2, 2, 4, 0));
+        ingredients.Add(new Ingredient("Onion", 3, Resources.Load("Ingredients/Onion") as GameObject, -1, 2, -2, 2, 4, 0));
+        ingredients.Add(new Ingredient("Garlic", 4, Resources.Load("Ingredients/Garlic") as GameObject, -1, 2, -2, 2, 4, 0));
+        ingredients.Add(new Ingredient("Potato", 5, Resources.Load("Ingredients/Potato") as GameObject, -1, 2, -2, 2, 4, 0));
 
         
 

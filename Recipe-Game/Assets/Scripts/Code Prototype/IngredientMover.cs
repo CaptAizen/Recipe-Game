@@ -7,12 +7,11 @@ public class IngredientMover : MonoBehaviour
     public IngredientGenerator ingredientGenerator;
     public CountdownBehavior countdownTimer;
     public StartGame startGame;
-    public int ingredientIndex;
     
-
-
+    public int ingredientIndex;
     public int IngredientsClicked = 0;
     public int PanIngredientLocationFinder;
+    public float timeSpentOnPan = 0;
 
     public Vector3[] PanIngredientLocations = new Vector3[]
     {
@@ -49,8 +48,19 @@ public class IngredientMover : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update ()
     {
-        
+        CheckPosition(this.gameObject);
+    }
+
+    void CheckPosition(GameObject gameObject)
+    {
+        foreach (Vector3 position in PanIngredientLocations)
+        {
+            if(gameObject.transform.position == position)
+            {
+                timeSpentOnPan += Time.deltaTime;
+            }
+        }
     }
 }
