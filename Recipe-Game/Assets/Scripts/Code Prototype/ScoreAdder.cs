@@ -6,7 +6,6 @@ public class ScoreAdder : MonoBehaviour
 {
     public CountdownBehavior countdownTimer;
     public ScoreDisplay scoreDisplay;
-    public StartGame game;
     public float clicks = 0;
 
     void OnMouseDown()

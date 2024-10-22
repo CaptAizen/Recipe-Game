@@ -4,17 +4,42 @@ using UnityEngine;
 
 public class IngredientMover : MonoBehaviour
 {
+    public IngredientGenerator ingredientGenerator;
+    public CountdownBehavior countdownTimer;
+    public StartGame startGame;
+    public int ingredientIndex;
+    
 
-    public void SpawnIngredients()
+
+    public int IngredientsClicked = 0;
+    public int PanIngredientLocationFinder;
+
+    public Vector3[] PanIngredientLocations = new Vector3[]
     {
-        /*for (int i = 0; i < ingredients.Count; i++)
+        new Vector3((float)-1.46099997,(float)2.73000002,(float)1.19000006),
+        new Vector3((float)-1.06900001,(float)2.73000002,(float)0.40200001),
+        new Vector3((float)-0.690999985,(float)2.73000002,(float)1.13499999),
+    };
+
+  private void OnMouseDown()
+    {
+        if (countdownTimer.CountdownTimer > 0 && startGame.gameOn)
         {
-            GameObject tempObj = Instantiate(ingredients[i].Prefab);
-            tempObj.name = i.ToString();
-            Vector3 tempV3 = tempObj.transform.position;
-            tempObj.transform.position = new Vector3(tempV3.x + ((float)-5 + i * (float)2), tempV3.y + ((float)0), tempV3.z + ((float)-3.89));
-        }*/
+            MoveIngredients();
+        }
     }
+
+    public void MoveIngredients()
+    {
+        PanIngredientLocationFinder = IngredientsClicked % 3;
+        IngredientsClicked += 1;
+
+        GameObject tempObj = Instantiate(gameObject);
+        tempObj.name = "Ingredient " + IngredientsClicked;
+        tempObj.transform.position = PanIngredientLocations[PanIngredientLocationFinder];
+    }
+   
+
 
 
     // Start is called before the first frame update
