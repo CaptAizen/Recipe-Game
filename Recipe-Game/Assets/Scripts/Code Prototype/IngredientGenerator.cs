@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RecipeManager : MonoBehaviour
+public class IngredientGenerator : MonoBehaviour
 {
     public List<Ingredient> ingredients = new List<Ingredient>();
-    public string Name { get; set; }
-    public int Id { get; set; }
-    public GameObject Prefab { get; set; }
-    public int PointValueRaw { get; set; }
-    public int PointValueCooked { get; set; }
-    public int PointValueBurnt { get; set; }
-    public float CookingTime { get; set; }
-    public float BurningTime { get; set; }
+
     // Start is called before the first frame update
     public void SpawnIngredients()
     {
