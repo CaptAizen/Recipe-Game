@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ScoreAdder : MonoBehaviour
 {
+    public RecipePool pool;
     public CountdownBehavior countdownTimer;
     public ScoreDisplay scoreDisplay;
     public float clicks = 0;
@@ -16,6 +17,11 @@ public class ScoreAdder : MonoBehaviour
         {
             scoreDisplay.score += 1;
             scoreDisplay.UpdateScoreText();
+            pool.SpawnRecipe();
+        }
+        if (clicks % 2 == 0)
+        {
+            pool.DestroyRecipe();
         }
         
     }

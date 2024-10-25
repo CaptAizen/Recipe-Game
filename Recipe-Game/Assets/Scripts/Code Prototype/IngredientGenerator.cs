@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,7 +33,6 @@ public class IngredientGenerator : MonoBehaviour
         ingredients.Add(new Ingredient("Potato", 5, Resources.Load("Ingredients/Potato") as GameObject, -1, 2, -2, 2, 4, 0));
 
         
-
         SpawnIngredients();
     }
 

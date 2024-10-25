@@ -830,9 +830,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e86992e93f44844dac270990fb742fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pool: {fileID: 956276270}
   countdownTimer: {fileID: 1800616818}
   scoreDisplay: {fileID: 628068300}
   clicks: 0
+--- !u!114 &956276270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956276263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7871e283f7674e94492bd0ad09c517fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1462287497
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -912,6 +925,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 956276268}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 59754926c6c32ff4f8c7e4304d54045e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 956276270}
   m_SourcePrefab: {fileID: 100100000, guid: 59754926c6c32ff4f8c7e4304d54045e, type: 3}
 --- !u!1 &1636520639
 GameObject:
@@ -1516,6 +1533,7 @@ MonoBehaviour:
   ingredientIndex: 0
   IngredientsClicked: 0
   PanIngredientLocationFinder: 0
+  timeSpentOnPan: 0
   PanIngredientLocations:
   - {x: -1.461, y: 2.73, z: 1.19}
   - {x: -1.069, y: 2.73, z: 0.402}
