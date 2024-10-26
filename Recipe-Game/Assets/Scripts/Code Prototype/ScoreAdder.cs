@@ -8,20 +8,23 @@ public class ScoreAdder : MonoBehaviour
     public CountdownBehavior countdownTimer;
     public ScoreDisplay scoreDisplay;
     public float clicks = 0;
+    public bool match = true;
 
     void OnMouseDown()
     {
         clicks += 1;
 
-        if (clicks >= 2 && countdownTimer.CountdownTimer > 0)
+        if (clicks >= 2 && countdownTimer.CountdownTimer > 0 && match)
         {
             scoreDisplay.score += 1;
             scoreDisplay.UpdateScoreText();
+            pool.DestroyRecipe();
             pool.SpawnRecipe();
         }
-        if (clicks % 2 == 0)
+        if (!match && countdownTimer.CountdownTimer > 0)
         {
             pool.DestroyRecipe();
+            pool.SpawnRecipe();
         }
         
     }
