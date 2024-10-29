@@ -9,8 +9,8 @@ public class IngredientMover : MonoBehaviour
     public StartGame startGame;
     
     public int ingredientIndex;
-    public int IngredientsClicked = 0;
-    public int PanIngredientLocationFinder;
+    public static int IngredientsClicked = 0;
+    public static int PanIngredientLocationFinder;
     public float timeSpentOnPan = 0;
 
     public Vector3[] PanIngredientLocations = new Vector3[]

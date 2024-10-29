@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IngredientGenerator : MonoBehaviour
 {
@@ -11,16 +12,23 @@ public class IngredientGenerator : MonoBehaviour
     public void SpawnIngredients()
     {
         for(int i = 0; i < ingredients.Count; i++)
-        {
+        {            
             GameObject tempObj = Instantiate(ingredients[i].Prefab);
+            BoxCollider boxCollider = tempObj.AddComponent<BoxCollider>();
+            boxCollider.isTrigger = true;
             tempObj.name = i.ToString();
             Vector3 tempV3 = tempObj.transform.position;
             tempObj.transform.position = new Vector3(tempV3.x + ((float)-5 + i * (float)2), tempV3.y + ((float)0), tempV3.z + ((float)-3.89));
-            tempObj.AddComponent<IngredientMover>();
+
+
+
 
             IngredientMover mover = tempObj.AddComponent<IngredientMover>();
             mover.ingredientGenerator = this;
             mover.ingredientIndex = ingredients[i].Id;
+            mover.countdownTimer = GameObject.Find("Timer").GetComponent<CountdownBehavior>();
+            mover.startGame = GameObject.Find("Pan").GetComponent<StartGame>();
+           
         }
     }
     void Start()
