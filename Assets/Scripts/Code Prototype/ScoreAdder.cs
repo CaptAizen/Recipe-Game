@@ -4,41 +4,44 @@ using UnityEngine;
 
 public class ScoreAdder : MonoBehaviour
 {
-    public RecipePool pool;
-    public CountdownBehavior countdownTimer;
-    public ScoreDisplay scoreDisplay;
-    public float clicks = 0;
-    public bool match = true;
+    public RecipePool pool; // Reference to RecipePool
+    public CountdownBehavior countdownTimer; // Reference to CountdownBehavior
+    public ScoreDisplay scoreDisplay; // Reference to ScoreDisplay
+    public float clicks = 0; // Counter for clicks
+    public bool match = true; // Flag to check if the recipe matches
 
+    // Method called when the object is clicked
     void OnMouseDown()
     {
         clicks += 1;
 
+        // Check if the number of clicks is greater than or equal to 2 and the countdown timer is greater than 0
         if (clicks >= 2 && countdownTimer.CountdownTimer > 0)
         {
-            match = CheckRecipeMatch();
+            match = CheckRecipeMatch(); // Check if the recipe matches
             if (match)
             {
-                int scoreChange = CalculateScore();
-                scoreDisplay.score += scoreChange;
-                scoreDisplay.UpdateScoreText();
+                int scoreChange = CalculateScore(); // Calculate the score change
+                scoreDisplay.score += scoreChange; // Update the score
+                scoreDisplay.UpdateScoreText(); // Update the score text
             }
-            ClearPan();
-            pool.DestroyRecipe();
-            pool.SpawnRecipe();
+            ClearPan(); // Clear the pan
+            pool.DestroyRecipe(); // Destroy the current recipe
+            pool.SpawnRecipe(); // Spawn a new recipe
         }
         if (!match && countdownTimer.CountdownTimer > 0)
         {
-            ClearPan();
-            pool.DestroyRecipe();
-            pool.SpawnRecipe();
+            ClearPan(); // Clear the pan
+            pool.DestroyRecipe(); // Destroy the current recipe
+            pool.SpawnRecipe(); // Spawn a new recipe
         }
         if (countdownTimer.CountdownTimer == 0)
         {
-            clicks = 0;
+            clicks = 0; // Reset the click counter
         }
     }
 
+    // Method to check if the recipe matches
     bool CheckRecipeMatch()
     {
         List<string> panIngredientNames = IngredientMover.panIngredients.ConvertAll(i => i.name);
@@ -52,6 +55,7 @@ public class ScoreAdder : MonoBehaviour
         return true;
     }
 
+    // Method to calculate the score change
     int CalculateScore()
     {
         int burntCount = 0;
@@ -82,7 +86,8 @@ public class ScoreAdder : MonoBehaviour
         }
     }
 
-   public void ClearPan()
+    // Method to clear the pan
+    public void ClearPan()
     {
         foreach (GameObject ingredient in IngredientMover.panIngredients)
         {

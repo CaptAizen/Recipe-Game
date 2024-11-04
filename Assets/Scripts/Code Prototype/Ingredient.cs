@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ingredient
 {
+    // Properties of the ingredient
     public string Name;
     public int Id;
     public GameObject Prefab;
@@ -14,6 +15,7 @@ public class Ingredient
     public float BurningTime;
     public float TimeSpentOnPan;
 
+    // Constructor to initialize the ingredient properties
     public Ingredient(string name, int id, GameObject prefab, int pointValueRaw, int pointValueCooked, int pointValueBurnt, float cookingTime, float burningTime, float timeSpentOnPan)
     {
         Name = name;
