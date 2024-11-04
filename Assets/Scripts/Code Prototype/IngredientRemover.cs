@@ -78,8 +78,14 @@ public class IngredientRemover : MonoBehaviour
 
     void ChangeMaterials(Material newMaterial)
     {
-        // Change the material of all renderer components
         foreach (Renderer renderer in renderers)
         {
             Material[] materials = renderer.materials;
             for (int i = 0; i < materials.Length; i++)
+            {
+                materials[i] = newMaterial;
+            }
+            renderer.materials = materials;
+        }
+    }
+}

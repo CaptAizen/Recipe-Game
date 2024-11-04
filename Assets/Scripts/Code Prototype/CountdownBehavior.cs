@@ -10,7 +10,7 @@ public class CountdownBehavior : MonoBehaviour
     private bool isCountingDown = false; // Flag to check if the countdown is active
     public ScoreAdder scoreAdder; // Reference to ScoreAdder
     public ScoreDisplay scoreDisplay; // Reference to ScoreDisplay
-    public HighScoreDisplay highScoreDisplay; // Reference to HighScoreDisplay
+    public Highscore highscore; // Reference to Highscore
 
     // Start is called before the first frame update
     void Start()
@@ -50,10 +50,10 @@ public class CountdownBehavior : MonoBehaviour
     // Method to check and set the high score
     void CheckAndSetHighScore()
     {
-        if (scoreDisplay.score > highScoreDisplay.highScore)
+        if (scoreDisplay.score > highscore.highscore)
         {
-            highScoreDisplay.highScore = scoreDisplay.score;
-            highScoreDisplay.UpdateHighScoreText();
+            highscore.highscore = scoreDisplay.score;
+            highscore.UpdateHighscoreText();
         }
     }
 

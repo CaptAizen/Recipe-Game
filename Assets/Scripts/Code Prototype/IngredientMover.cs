@@ -59,7 +59,7 @@ public class IngredientMover : MonoBehaviour
             // Add the ingredient to the list of pan ingredients
             panIngredients.Add(tempObj);
             Debug.Log("Added: " + tempObj.name);
-            Debug.Log("Current Ingredients: " + string.join(", ", panIngredients.ConvertAll(i => i.name)));
+            Debug.Log("Current Ingredients: " + string.Join(", ", panIngredients.ConvertAll(i => i.name)));
         }
     }
 }
