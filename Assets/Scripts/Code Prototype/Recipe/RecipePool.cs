@@ -7,10 +7,10 @@ using UnityEngine.UIElements;
 public class RecipePool : MonoBehaviour
 {
     public List<RecipeObject> recipeObjects = new List<RecipeObject>();
-
     public List<GameObject> currentRecipe = new List<GameObject>();
+    public List<string> currentRecipeNames = new List<string>();
 
-    // Start is called before the first frame update
+    private GameObject recipeParent;
 
     void Start()
     {
@@ -21,12 +21,9 @@ public class RecipePool : MonoBehaviour
         recipeObjects.Add(new RecipeObject("Garlic", 4, Resources.Load("Ingredients/Garlic") as GameObject));
         recipeObjects.Add(new RecipeObject("Potato", 5, Resources.Load("Ingredients/Potato") as GameObject));
 
-
+        recipeParent = new GameObject("Recipe");
         SpawnRecipe();
     }
-
-
-
 
     public void SpawnRecipe()
     {
@@ -34,13 +31,13 @@ public class RecipePool : MonoBehaviour
         var RecipeIngredientTwoID = UnityEngine.Random.Range(0, recipeObjects.Count);
         var RecipeIngredientThreeID = UnityEngine.Random.Range(0, recipeObjects.Count);
 
-        GameObject RecipeIngredientOne = Instantiate(recipeObjects[RecipeIngredientOneID].Prefab);
-        GameObject RecipeIngredientTwo = Instantiate(recipeObjects[RecipeIngredientTwoID].Prefab);
-        GameObject RecipeIngredientThree = Instantiate(recipeObjects[RecipeIngredientThreeID].Prefab);
+        GameObject RecipeIngredientOne = Instantiate(recipeObjects[RecipeIngredientOneID].Prefab, recipeParent.transform);
+        GameObject RecipeIngredientTwo = Instantiate(recipeObjects[RecipeIngredientTwoID].Prefab, recipeParent.transform);
+        GameObject RecipeIngredientThree = Instantiate(recipeObjects[RecipeIngredientThreeID].Prefab, recipeParent.transform);
 
-        Vector3 RecipeIngredientOnePosition = RecipeIngredientOne.transform.position;
-        Vector3 RecipeIngredientTwoPosition = RecipeIngredientTwo.transform.position;
-        Vector3 RecipeIngredientThreePosition = RecipeIngredientThree.transform.position;
+        RecipeIngredientOne.name = recipeObjects[RecipeIngredientOneID].Name;
+        RecipeIngredientTwo.name = recipeObjects[RecipeIngredientTwoID].Name;
+        RecipeIngredientThree.name = recipeObjects[RecipeIngredientThreeID].Name;
 
         RecipeIngredientOne.transform.position = new Vector3((float)1.6, 0, (float)-1.4);
         RecipeIngredientTwo.transform.position = new Vector3((float)1.6, 0, (float)-.4);
@@ -53,25 +50,19 @@ public class RecipePool : MonoBehaviour
         currentRecipe.Add(RecipeIngredientOne);
         currentRecipe.Add(RecipeIngredientTwo);
         currentRecipe.Add(RecipeIngredientThree);
+
+        currentRecipeNames.Add(RecipeIngredientOne.name);
+        currentRecipeNames.Add(RecipeIngredientTwo.name);
+        currentRecipeNames.Add(RecipeIngredientThree.name);
     }
-
-
-
 
     public void DestroyRecipe()
     {
-        foreach (var RecipeIngredientOne in currentRecipe)
+        foreach (var ingredient in currentRecipe)
         {
-            Destroy(RecipeIngredientOne);
-        }
-        foreach (var RecipeIngredientTwo in currentRecipe)
-        {
-            Destroy(RecipeIngredientTwo);
-        }
-        foreach (var RecipeIngredientThree in currentRecipe)
-        {
-            Destroy(RecipeIngredientThree);
+            Destroy(ingredient);
         }
         currentRecipe.Clear();
+        currentRecipeNames.Clear();
     }
 }

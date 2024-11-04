@@ -12,7 +12,7 @@ public class Highscore : MonoBehaviour
     public float highscore = 0;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         UpdateHighscoreText();
     }

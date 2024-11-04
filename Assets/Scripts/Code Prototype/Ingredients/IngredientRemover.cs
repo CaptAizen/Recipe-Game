@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,24 +15,20 @@ public class IngredientRemover : MonoBehaviour
     private Renderer objectRenderer;
     private Renderer[] renderers;
 
-
-    // Start is called before the first frame update
+    public enum CookingState { Raw, Cooked, Burnt }
+    public CookingState currentState = CookingState.Raw;
 
     void Start()
     {
-        // Load the materials from the Resources folder
         rawMaterial = Resources.Load<Material>("Ingredients/Ingredient Materials/RawMaterial");
         cookedMaterial = Resources.Load<Material>("Ingredients/Ingredient Materials/CookedMaterial");
         burntMaterial = Resources.Load<Material>("Ingredients/Ingredient Materials/BurntMaterial");
 
-        // Assign random cook and burn times
-        cookTime = Random.Range(1f, 1.5f); // Random cook time between 5 and 10 seconds
-        burntTime = Random.Range(2.5f, 4f); // Random burn time between 15 and 20 seconds
+        cookTime = Random.Range(1f, 1.5f);
+        burntTime = Random.Range(2.5f, 4f);
 
-        // Get all Renderer components in the object and its children
         renderers = GetComponentsInChildren<Renderer>();
 
-        // Set the initial materials for all renderers
         foreach (Renderer renderer in renderers)
         {
             Material[] materials = renderer.materials;
@@ -44,27 +39,29 @@ public class IngredientRemover : MonoBehaviour
             renderer.materials = materials;
         }
     }
-        private void OnMouseDown()
-    {
 
+    private void OnMouseDown()
+    {
+        IngredientMover.panIngredients.Remove(gameObject);
+        Debug.Log("Removed: " + gameObject.name);
+        Debug.Log("Current Ingredients: " + string.Join(", ", IngredientMover.panIngredients.ConvertAll(i => i.name)));
         Destroy(gameObject);
         IngredientMover.ingredientsClicked -= 1;
     }
 
     void Update()
     {
-        // Update the time spent on the pan
         timeSpentOnPan += Time.deltaTime;
 
-        // Check if the object is cooked
         if (timeSpentOnPan >= cookTime && timeSpentOnPan < burntTime)
         {
             ChangeMaterials(cookedMaterial);
+            currentState = CookingState.Cooked;
         }
-        // Check if the object is burnt
         else if (timeSpentOnPan >= burntTime)
         {
             ChangeMaterials(burntMaterial);
+            currentState = CookingState.Burnt;
         }
     }
 

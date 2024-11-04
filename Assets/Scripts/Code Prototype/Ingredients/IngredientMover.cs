@@ -13,6 +13,7 @@ public class IngredientMover : MonoBehaviour
     public static int PanIngredientLocationFinder;
     public static int ingredientsClicked = 0;
 
+    public static List<GameObject> panIngredients = new List<GameObject>();
 
     public Vector3[] PanIngredientLocations = new Vector3[]
     {
@@ -31,7 +32,6 @@ public class IngredientMover : MonoBehaviour
 
     public void MoveIngredients()
     {
-
         if (ingredientsClicked < 3)
         {
             PanIngredientLocationFinder = PositionCycler % 3;
@@ -39,10 +39,14 @@ public class IngredientMover : MonoBehaviour
             ingredientsClicked += 1;
 
             GameObject tempObj = Instantiate(gameObject);
-            tempObj.name = "Ingredient " + PositionCycler;
+            tempObj.name = gameObject.name; // Retain the original name
             tempObj.transform.position = PanIngredientLocations[PanIngredientLocationFinder];
             Destroy(tempObj.GetComponent<IngredientMover>());
             tempObj.AddComponent<IngredientRemover>();
+
+            panIngredients.Add(tempObj);
+            Debug.Log("Added: " + tempObj.name);
+            Debug.Log("Current Ingredients: " + string.Join(", ", panIngredients.ConvertAll(i => i.name)));
         }
     }
 }
